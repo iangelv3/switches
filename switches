@@ -1,0 +1,84 @@
+input.onGesture(Gesture.Shake, function () {
+    for (let i = 0; i < 2; i++) {
+        music.playTone(392, music.beat(BeatFraction.Quarter))
+        light.setAll(0xff8000)
+        music.rest(music.beat(BeatFraction.Eighth))
+        light.setAll(0xff0000)
+        music.playTone(392, music.beat(BeatFraction.Quarter))
+        light.setAll(0x007fff)
+        music.rest(music.beat(BeatFraction.Eighth))
+        music.playTone(392, music.beat(BeatFraction.Quarter))
+        light.setAll(0x007fff)
+        music.rest(music.beat(BeatFraction.Eighth))
+        light.setAll(0x007fff)
+        music.playTone(262, music.beat(BeatFraction.Whole))
+        light.setAll(0x00ff00)
+        music.playTone(262, music.beat(BeatFraction.Whole))
+        light.setAll(0xff8000)
+        music.playTone(392, music.beat(BeatFraction.Whole))
+        light.setAll(0xff0000)
+        music.playTone(392, music.beat(BeatFraction.Whole))
+        light.setAll(0x007fff)
+        music.playTone(349, music.beat(BeatFraction.Quarter))
+        light.setAll(0xff8000)
+        music.rest(music.beat(BeatFraction.Eighth))
+        music.playTone(330, music.beat(BeatFraction.Quarter))
+        light.setAll(0xff00ff)
+        music.rest(music.beat(BeatFraction.Eighth))
+        music.playTone(294, music.beat(BeatFraction.Quarter))
+        light.setAll(0x007fff)
+        music.playTone(523, music.beat(BeatFraction.Whole))
+        light.setAll(0x00ff00)
+        music.playTone(523, music.beat(BeatFraction.Whole))
+        light.setAll(0xff0000)
+        music.playTone(392, music.beat(BeatFraction.Whole))
+        light.setAll(0x0000ff)
+        music.playTone(349, music.beat(BeatFraction.Quarter))
+        light.setAll(0xff0000)
+        music.rest(music.beat(BeatFraction.Eighth))
+        music.playTone(330, music.beat(BeatFraction.Quarter))
+        light.setAll(0x007fff)
+        music.rest(music.beat(BeatFraction.Eighth))
+        music.playTone(349, music.beat(BeatFraction.Quarter))
+        light.setAll(0x00ff00)
+        music.rest(music.beat(BeatFraction.Eighth))
+        music.playTone(294, music.beat(BeatFraction.Whole))
+        light.setAll(0x0000ff)
+        music.playTone(294, music.beat(BeatFraction.Whole))
+        light.showAnimation(light.rainbowAnimation, 500)
+        light.stopAllAnimations()
+        music.setVolume(76)
+    }
+    light.clear()
+})
+input.onGesture(Gesture.TiltDown, function () {
+    light.showRing(
+    "red red red red red red red red red red"
+    )
+})
+input.onGesture(Gesture.TiltUp, function () {
+    light.showRing(
+    `blue blue blue blue blue blue blue blue blue blue`
+    )
+})
+input.onGesture(Gesture.TiltLeft, function () {
+    light.showRing(
+    `purple purple purple purple purple purple purple purple purple purple`
+    )
+})
+input.onGesture(Gesture.TiltRight, function () {
+    light.showRing(
+    `green green green green green green green green green green`
+    )
+})
+music.setVolume(255)
+music.setTempo(120)
+forever(function () {
+    if (input.lightLevel() == 0 || input.buttonA.isPressed()) {
+        light.showAnimation(light.theaterChaseAnimation, 500)
+    } else if (input.lightLevel() == 0 || input.buttonB.isPressed()) {
+        light.showAnimation(light.colorWipeAnimation, 500)
+    } else {
+        light.clear()
+    }
+})
